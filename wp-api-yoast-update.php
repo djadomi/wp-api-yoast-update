@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: WP API Yoast Update
-Plugin URI: https://github.com/yourusername/wp-api-yoast-update
+Plugin URI: https://github.com/djadomi/wp-api-yoast-update
 Description: Updates Yoast SEO fields for posts via WP API.
 Version: 0.0.1
-Author: Your Name
-Author URI: https://yourwebsite.com
+Author: djadomi
+Author URI: https://github.com/djadomi
 GitHub Plugin URI: https://github.com/djadomi/wp-api-yoast-update
 GitHub Branch: main
 Text Domain: wp-api-yoast-update

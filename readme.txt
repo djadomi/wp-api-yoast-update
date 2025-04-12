@@ -15,9 +15,9 @@ WP API Yoast Update provides an easy way to update Yoast SEO fields (focus keywo
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Changelog ==
-= 20250412144929p =
+= 0.0.1p =
 * Skeleton of plugin with no functionality yet.
 
 == Upgrade Notice ==
-= 20250412144929p =
+= 0.0.1p =
 Initial pre-alpha.
