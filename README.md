@@ -2,6 +2,7 @@
 
 >Note, this is a pre-alpha with no functionality as yet.
 
+```
 Contributors: djadomi
 Tags: api, yoast, seo, wp-api
 Requires at least: ?
@@ -9,6 +10,7 @@ Tested up to: 6.7.2
 Requires PHP: 8.3
 License: MIT
 License URI: https://opensource.org/licenses/MIT
+```
 
 ## Description
 
