@@ -13,7 +13,9 @@ class WP_API_Yoast_Update {
 		register_rest_route( 'wp-api-yoast-update/v1', '/update', [
 			'methods' => 'POST',
 			'callback' => [ $this, 'update_yoast_fields' ],
-			'permission_callback' => '__return_true', // Ideally, should add custom permission checks here.
+			'permission_callback' => function() {
+				return current_user_can('edit_posts');
+			},
 		] );
 	}
 
