@@ -13,3 +13,4 @@ Syntax of payload for endpoint `/wp-json/wp-api-yoast-update/v1/update`:
 	"meta_description": "your-meta-description"
   }
 }
+```

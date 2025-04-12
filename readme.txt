@@ -19,6 +19,7 @@ Syntax of payload for endpoint `/wp-json/wp-api-yoast-update/v1/update`:
 	"meta_description": "your-meta-description"
   }
 }
+```
 
 == Installation ==
 1. Upload the plugin to the `/wp-content/plugins/wp-api-yoast-update/` directory.
