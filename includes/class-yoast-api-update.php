@@ -10,9 +10,9 @@ class WP_API_Yoast_Update {
 
 	// Register custom REST API endpoint
 	public function register_update_endpoint() {
-		register_rest_route( 'yoast-update/v1', '/update', [
-			'methods'             => 'POST',
-			'callback'            => [ $this, 'update_yoast_fields' ],
+		register_rest_route( 'wp-api-yoast-update/v1', '/update', [
+			'methods' => 'POST',
+			'callback' => [ $this, 'update_yoast_fields' ],
 			'permission_callback' => '__return_true', // Ideally, should add custom permission checks here.
 		] );
 	}
