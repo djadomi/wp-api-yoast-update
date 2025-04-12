@@ -14,3 +14,13 @@ Syntax of payload for endpoint `/wp-json/wp-api-yoast-update/v1/update`:
   }
 }
 ```
+
+## WP CLI installation
+
+Get the latest zip URL from https://github.com/djadomi/wp-api-yoast-update/tags, then:
+
+```bash
+wp plugin install https://github.com/djadomi/wp-api-yoast-update/archive/refs/tags/0.0.1a.zip --activate
+```
+
+To update, add the `--force` flag to that command.
