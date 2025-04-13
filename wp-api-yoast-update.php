@@ -12,14 +12,10 @@ Text Domain: wp-api-yoast-update
 Domain Path: /languages
 */
 
-defined( 'ABSPATH' ) || exit;
-
-// Include plugin class files
-require_once plugin_dir_path( __FILE__ ) . 'includes/class-yoast-api-update.php';
-
-// Initialize plugin
+defined('ABSPATH') || exit;
+require_once plugin_dir_path(__FILE__) . 'includes/class-yoast-api-update.php';
 function wp_api_yoast_update_init() {
 	$yoast_api_update = new WP_API_Yoast_Update();
 	$yoast_api_update->init_hooks();
 }
-add_action( 'plugins_loaded', 'wp_api_yoast_update_init' );
+add_action('plugins_loaded', 'wp_api_yoast_update_init');
