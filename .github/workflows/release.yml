@@ -25,12 +25,11 @@ jobs:
       # Step 3: Extract TAG_VERSION and set it as an output
       - name: Extract TAG_VERSION
         id: extract_tag
-        run: echo "::set-output name=tag_version::${GITHUB_REF##*/}"
+        run: echo "tag_version=${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
 
       # Step 4: Debug TAG_VERSION
       - name: Debug TAG_VERSION
-        run: |
-          echo "Extracted TAG_VERSION is ${{ steps.extract_tag.outputs.tag_version }}"
+        run: echo "Extracted TAG_VERSION is ${{ steps.extract_tag.outputs.tag_version }}"
 
       # Step 5: Create the plugin ZIP file
       - name: Create plugin ZIP
