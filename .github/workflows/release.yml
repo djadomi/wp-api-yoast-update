@@ -34,7 +34,7 @@ jobs:
 
       # Step 4: Upload the ZIP file as a release artifact
       - name: Upload ZIP as release artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: wp-api-yoast-update.zip
           path: release/wp-api-yoast-update-${GITHUB_REF##*/}.zip
