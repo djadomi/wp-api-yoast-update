@@ -29,7 +29,9 @@ jobs:
 
       # Step 4: Debug TAG_VERSION
       - name: Debug TAG_VERSION
-        run: echo "Extracted TAG_VERSION is $TAG_VERSION"
+        run: |
+          echo "Extracted TAG_VERSION is $TAG_VERSION"
+          echo "Environment TAG_VERSION is ${{ env.TAG_VERSION }}"
 
       # Step 5: Create the plugin ZIP file
       - name: Create plugin ZIP
@@ -44,14 +46,20 @@ jobs:
       - name: Verify ZIP file
         run: ls -l release/
 
-      # Step 7: Upload the ZIP file as a release artifact
+      # Step 7: Debug ZIP file path
+      - name: Debug ZIP file path
+        run: |
+          echo "Looking for file: release/wp-api-yoast-update-${{ env.TAG_VERSION }}.zip"
+          ls -l release/
+
+      # Step 8: Upload the ZIP file as a release artifact
       - name: Upload ZIP as release artifact
         uses: actions/upload-artifact@v4
         with:
           name: wp-api-yoast-update.zip
           path: release/wp-api-yoast-update-${{ env.TAG_VERSION }}.zip
 
-      # Step 8: Create a GitHub Release
+      # Step 9: Create a GitHub Release
       - name: Create GitHub Release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v1
