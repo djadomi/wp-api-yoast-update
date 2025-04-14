@@ -26,11 +26,11 @@ jobs:
 
       # Step 3: Create the plugin ZIP file
       - name: Create plugin ZIP
+        if: startsWith(github.ref, 'refs/tags/')
         run: |
-          TAG_VERSION=${GITHUB_REF##*/}  # Extract version from tag (e.g., 20250412174820)
+          TAG_VERSION=${GITHUB_REF##*/}  # Extract version from tag
           mkdir -p release  # Create a directory for the release package
           zip -r release/wp-api-yoast-update-${TAG_VERSION}.zip . -x ".git/*" -x ".github/*" -x "README.md" -x "LICENSE"
-          # You can adjust exclusions as needed
 
       # Step 4: Upload the ZIP file as a release artifact
       - name: Upload ZIP as release artifact
