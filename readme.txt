@@ -28,7 +28,11 @@ Syntax of payload for endpoint `/wp-json/wp-api-yoast-update/v1/update`:
 == Changelog ==
 = 0.0.1p =
 * Skeleton of plugin with no functionality yet.
+= 0.0.1a =
+* Mostly working Alpha
+= 0.0.2 =
+* Working beta version
 
 == Upgrade Notice ==
-= 0.0.1p =
+= 0.0.2 =
 Initial pre-alpha.
