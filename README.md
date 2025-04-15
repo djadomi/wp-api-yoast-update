@@ -25,3 +25,5 @@ wp plugin install https://github.com/djadomi/wp-api-yoast-update/releases/latest
 ```
 
 To update, add the `--force` flag to that command.
+
+Note that there's no (simple) way to use `wp vhosts plugin` to install or update the plugin.
