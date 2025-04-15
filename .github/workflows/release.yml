@@ -1,75 +1,31 @@
-name: Build and Release Plugin ZIP
+name: Build and Attach Plugin ZIP
+
+on:
+  release:
+    types: [published]
 
 permissions:
   contents: write
 
-on:
-  push:
-    # Trigger the workflow only on tag pushes
-    tags:
-      - 'v*.*.*'
-
 jobs:
-  build:
+  zip-and-release:
     runs-on: ubuntu-latest
-
     steps:
-      # Step 1: Checkout the repository
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Check out code
+        uses: actions/checkout@v3
 
-      # Step 2: Set up PHP
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.3'
-          extensions: mbstring, zip
+      - name: Set plugin slug
+        id: vars
+        run: echo "PLUGIN_SLUG=$(basename $GITHUB_REPOSITORY)" >> $GITHUB_ENV
 
-      # Step 3: Extract TAG_VERSION and set it as an output
-      - name: Extract TAG_VERSION
-        id: extract_tag
-        run: echo "tag_version=${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
-
-      # Step 4: Debug TAG_VERSION
-      - name: Debug TAG_VERSION
-        run: echo "Extracted TAG_VERSION is ${{ steps.extract_tag.outputs.tag_version }}"
-
-      # Step 5: Create the plugin ZIP file
-      - name: Create plugin ZIP
+      - name: Create ZIP file
         run: |
-          echo "Creating ZIP file for version $TAG_VERSION"
-          mkdir -p release
-          zip -r release/wp-api-yoast-update-${TAG_VERSION}.zip . -x ".git/*" -x ".github/*" -x "README.md" -x "LICENSE"
-        env:
-          TAG_VERSION: ${{ steps.extract_tag.outputs.tag_version }}
+          zip -r $PLUGIN_SLUG.zip . \
+            -x ".git/*" ".github/*" "tests/*" "vendor/*" "*.zip"
 
-      # Step 6: Verify ZIP file creation
-      - name: Verify ZIP file
-        run: ls -l release/
-
-      # Step 7: Debug ZIP file path
-      - name: Debug ZIP file path
-        run: |
-          echo "Looking for file: release/wp-api-yoast-update-${TAG_VERSION}.zip"
-          ls -l release/
-        env:
-          TAG_VERSION: ${{ steps.extract_tag.outputs.tag_version }}
-
-      # Step 8: Upload the ZIP file as a release artifact
-      - name: Upload ZIP as release artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload ZIP to GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: wp-api-yoast-update.zip
-          path: release/wp-api-yoast-update-${{ env.TAG_VERSION }}.zip
+          files: ${{ env.PLUGIN_SLUG }}.zip
         env:
-          TAG_VERSION: ${{ steps.extract_tag.outputs.tag_version }}
-
-      # Step 9: Create a GitHub Release
-      - name: Create GitHub Release
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v1
-        with:
-          files: release/wp-api-yoast-update-${{ env.TAG_VERSION }}.zip
-        env:
-          TAG_VERSION: ${{ steps.extract_tag.outputs.tag_version }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
