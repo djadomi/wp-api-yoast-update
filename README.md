@@ -20,10 +20,10 @@ Content-Type: application/json
 
 ## WP CLI installation
 
-Get the latest zip URL from https://github.com/djadomi/wp-api-yoast-update/tags, then:
+Get the latest zip URL from https://github.com/djadomi/wp-api-yoast-update/releases, and find the latest release, then, for example:
 
 ```bash
-wp plugin install https://github.com/djadomi/wp-api-yoast-update/archive/refs/tags/0.0.2.zip --activate
+wp plugin install https://github.com/djadomi/wp-api-yoast-update/releases/download/20250415183948/wp-api-yoast-update.zip --activate
 ```
 
 To update, add the `--force` flag to that command.

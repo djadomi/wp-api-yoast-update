@@ -3,7 +3,7 @@
 Plugin Name: WP API Yoast Update
 Plugin URI: https://github.com/djadomi/wp-api-yoast-update
 Description: Updates Yoast SEO fields for posts via WP API.
-Version: 0.0.1
+Version: 0.0.3
 Author: djadomi
 Author URI: https://github.com/djadomi
 GitHub Plugin URI: https://github.com/djadomi/wp-api-yoast-update
