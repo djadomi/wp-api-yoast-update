@@ -1,7 +1,5 @@
 # WP API Yoast Update
 
->Note that this is a pre-alpha skeleton with no functionality.
-
 WP API Yoast Update provides an easy way to update Yoast SEO fields (focus keyword, meta description) for posts using the WP REST API.
 
 HTTP syntax:
@@ -27,3 +25,7 @@ wp plugin install https://github.com/djadomi/wp-api-yoast-update/releases/latest
 To update, add the `--force` flag to that command.
 
 Note that there's no (simple) way to use `wp vhosts plugin` to install or update the plugin.
+
+## _Raison d'être_
+
+The point of building this plugin was to provide a way to update Yoast SEO fields (focus keyword, meta description) for posts using the WP REST API. I was (am) building a post/page generator web app which creates posts and pages, and updates the WordPress blog using the WP API, but there is no built-in way to get create of update Yoast `postmeta` in this context. This plugin provides a simple way to do that.
