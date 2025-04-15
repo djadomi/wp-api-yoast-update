@@ -29,3 +29,4 @@ jobs:
           files: ${{ env.PLUGIN_SLUG }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PLUGIN_SLUG: ${{ env.PLUGIN_SLUG }}
